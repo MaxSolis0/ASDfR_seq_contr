@@ -1,0 +1,46 @@
+<launch>
+
+  <!-- ============================= -->
+  <!-- 1) cam2image node            -->
+  <!-- ============================= -->
+  <node pkg="cam2image_vm2ros"
+        exec="cam2image"
+        name="cam2image"
+        output="screen"
+        args="--ros-args --params-file src/cam2image_vm2ros/config/cam2image.yaml"/>
+
+  <!-- ============================= -->
+  <!-- 2) color_tracker node            -->
+  <!-- ============================= -->
+  <node pkg="img_proc" 
+	exec="color_tracker" 
+	name="color_tracker" 
+	output="screen" 
+	args="--ros-args --params-file src/image_proc/config/color_tracker.yaml"/>
+
+  <!-- ============================= -->
+  <!-- 3) RELbot simulator          -->
+  <!-- ============================= -->
+  <node pkg="relbot_simulator"
+        exec="relbot_simulator"
+        name="relbot_simulator"
+        output="screen"/>
+
+  <!-- ============================= -->
+  <!-- 4) Setpoint sequence node    -->
+  <!-- ============================= -->
+  <node pkg="seq_contr"
+        exec="setpoint_sequence_node"
+        name="setpoint_sequence_node"
+        output="screen"
+        args="--ros-args --params-file src/seq_contr/config/setpoints.yaml"/>
+
+  <!-- ============================= -->
+  <!-- 5) 2D plotter          -->
+  <!-- ============================= -->
+  <node pkg="seq_contr" 
+	exec="plotter2D.py" 
+	name="plotter2D" 
+	output="screen"/>
+
+</launch>

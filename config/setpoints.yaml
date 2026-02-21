@@ -1,0 +1,16 @@
+/setpoint_sequence_node:
+  ros__parameters:
+    setpoints: false #follow setpoints or follow color_tracker (1.2.1)
+    mode: true #true, for /moving_camera (1.2.3), false, for /image (1.2.2) [must also change remap]
+    width: 240
+    desired_width: 100.0 # width of tracked object in frame
+    #[duration, x, y, z ]
+    setpoints_array: [
+      2.0, 0.0, 0.0, 0.0,
+      20.0, -3.0, -0.0, 0.0,
+      10.0, -5.0, -5.0, 0.0,
+      10.0, 0.5, 0.0, 0.0,
+      10.0, 0.0, 0.0, 0.0,
+      2.0, 0.0, 0.0, 0.0
+    ]
+    #
