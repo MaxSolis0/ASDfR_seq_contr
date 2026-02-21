@@ -3,25 +3,22 @@
 <package format="3">
   <name>seq_contr</name>
   <version>0.0.0</version>
-  <description>Sequence controller with C++ control and Python plotting</description>
-
-  <maintainer email="zzx@todo.todo">zzx</maintainer>
-  <license>Apache-2.0</license>
-
-  <!-- Build tool -->
-  <buildtool_depend>ament_cmake</buildtool_depend>
-
-  <!-- Core ROS dependencies -->
+  <description>Sequence controller for RELbot</description>
+  <maintainer email="alexey05072003@gmail.com">Aleksei Obshatko</maintainer>
+  <maintainer email="solisnlmax@gmail.com">Max Solis</maintainer>
+  <license>Apache-2.0</license>	
+	  
+  <buildtool_depend>ament_cmake</buildtool_depend>	
+	
   <depend>rclcpp</depend>
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
-  <depend>example_interfaces</depend>
-
-  <!-- Testing -->
+  <depend>example_interfaces</depend>	
+	
   <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
-
+  <test_depend>ament_lint_common</test_depend>	
+	
   <export>
     <build_type>ament_cmake</build_type>
   </export>

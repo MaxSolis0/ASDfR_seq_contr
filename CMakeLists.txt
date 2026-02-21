@@ -26,6 +26,10 @@ ament_target_dependencies(setpoint_sequence_node
   example_interfaces 
 )
 
+install(DIRECTORY include/
+  DESTINATION include/${PROJECT_NAME}
+)
+
 install(TARGETS
   setpoint_sequence_node
   DESTINATION lib/${PROJECT_NAME}
