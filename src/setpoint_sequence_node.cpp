@@ -224,6 +224,28 @@ void SetpointSequenceNode::publishCmd(double left, double right)
     example_interfaces::msg::Float64 lmsg; //convert to example_interfaces/msgs/Float64 which is format used by relbot_simulator
     example_interfaces::msg::Float64 rmsg;
 
+    // avoid division by zero in relbot_adapter (really guys?)
+    if (abs(left) < 0.001 && abs(right) < 0.001){
+      lmsg.data = 0.001;
+      rmsg.data = 0.001;
+      
+      leftPub_->publish(lmsg);
+      rightPub_->publish(rmsg);
+    }
+    
+    // Some safety for the motor speeds
+    if (abs(left) > 5.0 || (right) > 5.0)
+    {
+      // get biggest number
+      double max_value = std::max(abs(left), abs(right)); // this needs absolute values in relbot_adapter (really guys? part 2)
+      // find scaling value
+      double scaling_factor = 5.0 / max_value; //magic number
+
+      // rescale BOTH components to keep same directionality
+      left = left * scaling_factor;
+      right = right * scaling_factor;
+    }
+
     lmsg.data = -left; // inverted in relbot_simulator
     rmsg.data = right;
 

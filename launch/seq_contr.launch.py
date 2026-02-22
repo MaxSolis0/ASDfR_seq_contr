@@ -59,6 +59,21 @@ def generate_launch_description():
             name='relbot_simulator',
             output='screen'
         ),
+        
+        # =============================
+        # 3) RELbot simulator
+        # =============================
+        Node(
+            package='relbot_adapter',
+            executable='relbot_adapter',
+            name='relbot_adapter',
+            output='screen',
+            remappings=[
+                ('output/motor_cmd', 'input/motor_cmd')
+            ]
+        ),
+
+        
 
         # =============================
         # 4) Setpoint sequence node
