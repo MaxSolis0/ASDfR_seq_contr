@@ -1,11 +1,9 @@
 Package seq_contr
 -----------------------------------------------
-Description: This package aims to accomplish the tasks in Assignment 1.2 of basic image processing with ROS2: the sequence controller and the tracking of an object in the camera.
+### Description
+This package aims to accomplish the tasks in Assignment 1.2 of basic image processing with ROS2: the sequence controller and the tracking of an object in the camera.
 
-Building instructions: Place folder in src. Build normally via colcon build.
-
-*****Node: setpoint_sequence_node*****
-Input:
+### Inputs
 /output/robot_pose
         Type: geometry_msgs/msg/PoseStamped
         (the orientation is supposed to be quaternion format but only z is used)
@@ -29,7 +27,7 @@ Output:
 /target
         Type: geometry_msgs/msg/Point
 	
-Run:
+### Run
 	ros2 launch seq_contr seq_contr.launch.py 
 	# To give a new setpoint during runtime:
 	# (first ensure setpoints is true):
@@ -37,7 +35,7 @@ Run:
 	# input one or more new setpoints in format [duration, x, y, z]
 	ros2 param set /setpoint_sequence_node setpoints_array "[10.0, 1.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0]"
 
-Parameters:
+### Parameters
 	bool setpoints: Defines if the robot should respond to setpoints, Default true.
 	double array setpoints_array: The setpoint coordinates in array form with format [duration, x, y, z ], Default empty.
 	double kp_linear: Proportional gain for linear velocity based on error, Default: 10.0
@@ -47,7 +45,7 @@ Parameters:
 	int width: Width of camera window, Default: 360
 	double desired_width: Desired width of tracked object in camera view, Default: 100.0
 	
-Core components: 
+### Core components 
 	timerCallback(): Runs the controller periodically for a sequence of setpoints or stops the robot if finished.
 	sequenceController(): Differential Drive proportional controller from X,Y target to left and right wheel speeds.
 	objectController(): Differential Drive proportional controller to track object in camera view.
