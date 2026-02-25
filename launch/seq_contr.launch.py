@@ -40,7 +40,7 @@ def generate_launch_description():
             parameters=[
                 os.path.join(
                     ws_src,
-                    'image_proc',
+                    'img_proc',
                     'config',
                     'color_tracker.yaml'
                 )
